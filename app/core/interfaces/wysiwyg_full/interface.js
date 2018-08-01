@@ -174,6 +174,11 @@ define([
           editor.on('redo', saveEditorContents);
           editor.on('NodeChange', saveEditorContents);
 
+          var afterProcessingContent = function () {
+            editor.iframeElement.style.height = 'auto';
+          };
+          editor.on('PostProcess', afterProcessingContent);
+
           if (customWrapperSettings) {
             var previewStyles = '';
 
